@@ -6,4 +6,4 @@ newList("Work");
 
 addBullet("Work", "Complete Project", "Steps 1, 2, 3, and 4", new Date(), "high")
 
-console.log(lists)
+console.log(JSON.parse(localStorage.getItem("lists")))
