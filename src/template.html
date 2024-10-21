@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="userTilediv">
+            <img src="./images/dashboard.svg" alt="dashboard">
+            <h2>Dashboard</h2>
+        </div>
+        <div class="selectionOptions">
+            <div class="quickViewSelector">
+                <h3 class="selectorTitle">Quick View</h3>
+                <ul class="selectionList">
+                    <li class="quickViewOption">
+                        <button>Today</button>
+                    </li>
+                    <li class="quickViewOption">
+                        <button>This Week</button>
+                    </li>
+                    <li class="quickViewOption">
+                        <button>Priority</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="listsSelector">
+                <h3 class="selectorTitle">My Lists</h3>
+                <ul class="selectionList"></ul>
+            </div>
+        </div>
+        <button class="addList add"><img src="./images/add-light.svg" alt="addList"></button>
+    </div>
+    <div class="content">
+        <div class="listTitleDiv">
+            <h1 class="listTitle">Today</h1>
+            <div class="listTitleActions">
+                <button><img src="./images/delete.svg" alt="delete list"></button>
+                <button><img src="./images/edit.svg" alt="edit list"></button>
+            </div>
+        </div>
+        <div class="bulletsDiv">
+            <div class="bulletPoint">
+                <label class="checkBoxSurround">
+                    <input type="checkbox" name="completeBullet" class="completeBullet">
+                    <span class="checkmark"></span>
+                </label>
+                <div class="bulletText">
+                    <h3 class="bulletTitle">Title</h>
+                    <p class="bulletDescription">Description</p>
+                </div>
+                <p class="bulletDate">20/10/2024</p>
+                <button class="bulletEdit"><img src="./images/edit.svg" alt="edit"></button>
+            </div>
+            <div class="bulletPoint">
+                <label class="checkBoxSurround">
+                    <input type="checkbox" name="completeBullet" class="completeBullet">
+                    <span class="checkmark"></span>
+                </label>
+                <div class="bulletText">
+                    <h3 class="bulletTitle">Title</h>
+                    <p class="bulletDescription">Description</p>
+                </div>
+                <p class="bulletDate">20/10/2024</p>
+                <button class="bulletEdit"><img src="./images/edit.svg" alt="edit"></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

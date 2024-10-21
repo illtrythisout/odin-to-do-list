@@ -1,0 +1,271 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  line-height: 1.5;
+  text-decoration: none;
+  font-family: Poppins;
+  list-style-type: none;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+@font-face {
+    font-family: poppins;
+    src: url(./fonts/Poppins-Regular.ttf);
+}
+
+:root {
+    --background-grey: #f3f4f6;
+    --primary-color: #1e293b;
+    --primary-dimmed: #64748b;
+    --grey-highlight: #e2e8f0;
+    --grey-hover: #cbd5e1;
+
+    --highlight-transition-time: 0.3s;
+
+    --section-padding: 1rem;
+}
+
+* {
+    color: var(--primary-color);
+    font-family: poppins;
+}
+
+body {
+    display: grid;
+    grid-template-columns: auto 1fr;
+
+    height: 100dvh;
+}
+
+.sidebar {
+    background-color: var(--background-grey);
+    padding: var(--section-padding);
+    position: relative;
+}
+
+.userTilediv {
+    display: flex;
+    gap: calc(var(--section-padding) / 3);
+
+    align-items: center;
+    font-size: 3rem;
+}
+.userTilediv img {
+    height: 4rem;
+}
+
+.selectionOptions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-padding);
+
+    margin-left: 5rem;
+    margin-top: var(--section-padding);
+}
+
+.selectorTitle {
+    font-size: 1.5rem;
+    margin-bottom: calc(var(--section-padding) / 2);
+}
+.selectionList {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--section-padding) / 2);
+}
+.selectionOptions button {
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 10px;
+    padding: 0.25rem 1rem;
+    background-color: var(--grey-highlight);
+    text-align: start;
+    width: 100%;
+    cursor: pointer;
+    transition: var(--highlight-transition-time);
+}
+.selectionOptions button:hover {
+    background-color: var(--grey-hover);
+}
+
+.addList {
+    position: absolute;
+    bottom: var(--section-padding);
+    right: var(--section-padding);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: calc(var(--section-padding) / 3);;
+
+    --size: 4rem;
+    width: var(--size);
+    height: var(--size);
+    border: none;
+    border-radius: calc(var(--size) / 2);
+    background-color: var(--primary-color);
+    cursor: pointer;
+
+    transition: width 0.3s ease, padding 0.3s ease;
+}
+.addList img {
+    --size: 3rem;
+    width: var(--size);
+    height: var(--size);
+}
+.addList:hover {
+    width: 12rem;
+    padding: 0 calc(var(--section-padding) / 2);
+}
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+.addList:hover::after {
+    content: "Add List";
+    color: var(--background-grey);
+    font-size: 1.2rem;
+    margin-right: 10px;
+
+    opacity: 0;
+    animation: fadeIn 0.9s forwards;
+}
+
+
+.content {
+    padding: var(--section-padding) calc(var(--section-padding) * 5);
+}
+
+.listTitleDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: var(--section-padding);
+}
+.listTitleDiv::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+
+    --height: 2.5px;
+    height: var(--height);
+    width: 100%;
+    background-color: var(--primary-color);
+    border-radius: calc(var(--height) / 2);
+}
+.listTitle {
+    font-size: 3rem;
+}
+.listTitleActions {
+    --size: 3rem;
+    display: flex;
+    gap: 1rem;
+}
+.listTitleActions button {
+    border: none;
+    background-color: var(--grey-highlight);
+    border-radius: 10px;
+    height: var(--size);
+    width: var(--size);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    transition: var(--highlight-transition-time);
+}
+.listTitleActions button:hover {
+    background-color: var(--grey-hover);
+}
+.listTitleActions img {
+    height: calc(var(--size) / 1.5);
+}
+
+
+.bulletsDiv {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--section-padding) / 2);
+}
+
+.bulletPoint {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    height: auto;
+    width: 100%;
+    padding: var(--section-padding);
+
+    background-color: var(--grey-highlight);
+    border-radius: 1.5rem;
+}
+
+.checkBoxSurround {
+    --size: 2rem;
+    width: var(--size);
+    height: var(--size);
+    cursor: pointer;
+}
+.checkBoxSurround .checkmark {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    border: 2.5px solid var(--primary-color);
+    border-radius: 10px;
+    background: var(--grey-highlight) url(./images/check.svg) center/3000% no-repeat;
+    transition: background-size 0.25s ease, background-color var(--highlight-transition-time);
+}
+.checkBoxSurround input:checked + .checkmark {
+    background-color: var(--primary-color);
+    background-size: 100%;
+}
+.checkBoxSurround input {
+    display: none;
+}
+.checkBoxSurround .checkmark:hover {
+    background-color: var(--grey-hover);
+}
+
+.bulletTitle {
+    font-size: 1.5rem;
+}
+.bulletDescription {
+    font-size: 1rem;
+    color: var(--primary-dimmed);
+}
+
+.bulletEdit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    --size: 2rem;
+    width: var(--size);
+    height: var(--size);
+    border: 2.5px solid var(--primary-color);
+    border-radius: 10px;
+    background-color: var(--grey-highlight);
+    cursor: pointer;
+
+    transition: var(--highlight-transition-time);
+}
+.bulletEdit:hover {
+    background-color: var(--grey-hover);
+}
