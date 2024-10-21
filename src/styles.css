@@ -101,7 +101,7 @@ body {
     background-color: var(--grey-hover);
 }
 
-.addList {
+.add {
     position: absolute;
     bottom: var(--section-padding);
     right: var(--section-padding);
@@ -121,22 +121,26 @@ body {
 
     transition: width 0.3s ease, padding 0.3s ease;
 }
-.addList img {
+.add img {
     --size: 3rem;
     width: var(--size);
     height: var(--size);
 }
+.add:hover {
+    padding: 0 calc(var(--section-padding) / 2);
+}
 .addList:hover {
     width: 12rem;
-    padding: 0 calc(var(--section-padding) / 2);
+}
+.addBullet:hover {
+    width: 15rem;
 }
 @keyframes fadeIn {
     to {
         opacity: 1;
     }
 }
-.addList:hover::after {
-    content: "Add List";
+.add:hover::after {
     color: var(--background-grey);
     font-size: 1.2rem;
     margin-right: 10px;
@@ -144,7 +148,12 @@ body {
     opacity: 0;
     animation: fadeIn 0.9s forwards;
 }
-
+.addList:hover::after {
+    content: "Add List";
+}
+.addBullet:hover::after {
+    content: "Add List Item";
+}
 
 .content {
     padding: var(--section-padding) calc(var(--section-padding) * 5);
