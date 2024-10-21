@@ -15,8 +15,13 @@ function newList(name) {
     }
 }
 
-function addBullet(list, title, description, date, priority) {
-    let bullet = {title: title, description: description, date: date, priority: priority};
+function addBullet(list, title, description, date) {
+    let bullet = {
+        title: title,
+        description: description,
+        date: date,
+        completed: false
+    };
     lists[list].push(bullet);
     addToLocalStorage();
 }
