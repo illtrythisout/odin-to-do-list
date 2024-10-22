@@ -30,6 +30,7 @@ input, button, textarea, select {
 :root {
     --background-grey: #f3f4f6;
     --primary-color: #1e293b;
+    --primary-color-faded: #1e293b08;
     --primary-dimmed: #64748b;
     --grey-highlight: #e2e8f0;
     --grey-hover: #cbd5e1;
@@ -99,6 +100,21 @@ body {
 }
 .selectionOptions button:hover {
     background-color: var(--grey-hover);
+}
+
+.selectionOptions button input,
+.selectionOptions button input:focus,
+.selectionOptions button input::placeholder,
+.bulletsDiv input,
+.bulletsDiv input:focus,
+.bulletsDiv input::placeholder {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+}
+.bulletDate {
+    text-align: center;
 }
 
 .add {
@@ -218,6 +234,7 @@ body {
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
     align-items: center;
+    gap: var(--section-padding);
 
     height: auto;
     width: 100%;

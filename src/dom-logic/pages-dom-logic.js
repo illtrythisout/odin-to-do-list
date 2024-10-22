@@ -1,7 +1,7 @@
 import {makeElement, removeElement} from "./element-factory";
 import editImg from "../images/edit.svg";
 import deleteImg from "../images/delete.svg";
-export {updateTitle, addTitleBtnsDom, addListDom, addBulletDom}
+export {updateTitle, addTitleBtnsDom, addListDom, addBulletDom, makeNewListDom, makeNewBulletDom}
 
 const updateTitle = function (content) {
     const title = document.querySelector(".listTitle");
@@ -47,5 +47,43 @@ const addBulletDom = function (title, description, date) {
 
     const bulletEdit = makeElement("button", "class", "bulletEdit", "", bulletPoint);
     const bulletEditImg = makeElement("img", "alt", "edit bullet", "", bulletEdit);
-    bulletEditImg.src = editImg;
+    bulletEditImg.src = deleteImg;
+}
+
+const makeNewListDom = function () {
+    const container = document.querySelector(".listsOptions");
+
+    const listMakerLi = makeElement("li", "class", "listsOptionsLi", "", container);
+    const listMakerButton = makeElement("button", "", "", "", listMakerLi);
+    const listMakerInput = makeElement("input", "type", "text", "", listMakerButton);
+    listMakerInput.setAttribute("maxlength", "10")
+}
+
+const makeNewBulletDom = function (title, description, date) {
+    const container = document.querySelector(".bulletsDiv");
+
+
+    const bulletPoint = makeElement("div", "class", "bulletPoint", "", container);
+
+    const checkBoxSurround = makeElement("label", "class", "checkBoxSurround", "", bulletPoint);
+    const checkmark = makeElement("span", "class", "checkmark", "", checkBoxSurround);
+
+    const bulletText = makeElement("div", "class", "bulletText", "", bulletPoint);
+    const BulletMakerTitleInput = makeElement("input", "type", "text", "", bulletText);
+    BulletMakerTitleInput.setAttribute("maxlength", "20");
+    BulletMakerTitleInput.setAttribute("class", "bulletTitle");
+    BulletMakerTitleInput.setAttribute("placeholder", "Title");
+    const BulletMakerDescriptionInput = makeElement("input", "type", "text", "", bulletText);
+    BulletMakerDescriptionInput.setAttribute("maxlength", "25");
+    BulletMakerDescriptionInput.setAttribute("class", "bulletDescription");
+    BulletMakerDescriptionInput.setAttribute("placeholder", "Description");
+
+    const bulletDate = makeElement("input", "type", "text", "", bulletPoint);
+    bulletDate.setAttribute("maxlength", "10");
+    bulletDate.setAttribute("class", "bulletDate");
+    bulletDate.setAttribute("placeholder", "dd/mm/yy");
+
+    const bulletDelete = makeElement("button", "class", "bulletEdit", "", bulletPoint);
+    const bulletEditImg = makeElement("img", "alt", "edit bullet", "", bulletDelete);
+    bulletEditImg.src = deleteImg;
 }

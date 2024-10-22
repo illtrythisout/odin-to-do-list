@@ -1,6 +1,6 @@
 import "./styles.css";
 import {lists, newList, addBullet} from "./list-logic";
-import { updateTitle, addTitleBtnsDom, addListDom, addBulletDom } from "./dom-logic/pages-dom-logic";
+import {updateTitle, addTitleBtnsDom, addListDom, addBulletDom, makeNewListDom, makeNewBulletDom} from "./dom-logic/pages-dom-logic";
 
 newList("Personal");
 newList("Work");
@@ -8,5 +8,8 @@ newList("Work");
 addBullet("Work", "Complete Project", "Steps 1, 2, 3, and 4", new Date(), "high")
 addBulletDom("Complete Project", "Steps 1, 2, 3, and 4", "21/10/2024")
 addListDom("Work");
+
+makeNewListDom()
+makeNewBulletDom()
 
 console.log(JSON.parse(localStorage.getItem("lists")))
