@@ -1,4 +1,5 @@
 import {makeElement, removeElement} from "./element-factory";
+import editImg from "../images/edit.svg";
 export {updateTitle, addBulletDom}
 
 const updateTitle = function (content) {
@@ -25,7 +26,7 @@ const addBulletDom = function (title, description, date) {
     const bulletDate = makeElement("p", "class", "bulletDate", date, bulletPoint);
 
     const bulletEdit = makeElement("button", "class", "bulletEdit", "", bulletPoint);
-    const bulletEditImg = makeElement("img", "src", "./images/edit.svg", "", bulletEdit);
-    bulletEditImg.setAttribute("alt", "edit bullet")
+    const bulletEditImg = makeElement("img", "alt", "edit bullet", "", bulletEdit); // Fix the image
+    bulletEditImg.src = editImg;
     
 }
