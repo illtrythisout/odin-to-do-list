@@ -1,10 +1,23 @@
 import {makeElement, removeElement} from "./element-factory";
 import editImg from "../images/edit.svg";
-export {updateTitle, addListDom, addBulletDom}
+import deleteImg from "../images/delete.svg";
+export {updateTitle, addTitleBtnsDom, addListDom, addBulletDom}
 
 const updateTitle = function (content) {
     const title = document.querySelector(".listTitle");
     title.textContent = content;
+}
+
+const addTitleBtnsDom = function () {
+    const container = document.querySelector(".listTitleActions");
+
+    const listDeleteBtn = makeElement("button", "", "", "", container);
+    const listDeleteImg = makeElement("img", "alt", "delete list", "", listDeleteBtn);
+    listDeleteImg.src = deleteImg;
+
+    const listEditBtn = makeElement("button", "", "", "", container);
+    const listEditImg = makeElement("img", "alt", "edit bullet", "", listEditBtn);
+    listEditImg.src = editImg;
 }
 
 const addListDom = function (title) {
@@ -33,6 +46,6 @@ const addBulletDom = function (title, description, date) {
     const bulletDate = makeElement("p", "class", "bulletDate", date, bulletPoint);
 
     const bulletEdit = makeElement("button", "class", "bulletEdit", "", bulletPoint);
-    const bulletEditImg = makeElement("img", "alt", "edit bullet", "", bulletEdit); // Fix the image
+    const bulletEditImg = makeElement("img", "alt", "edit bullet", "", bulletEdit);
     bulletEditImg.src = editImg;
 }

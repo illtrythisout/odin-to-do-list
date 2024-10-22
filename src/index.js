@@ -1,6 +1,6 @@
 import "./styles.css";
 import {lists, newList, addBullet} from "./list-logic";
-import { updateTitle, addListDom, addBulletDom } from "./dom-logic/pages-dom-logic";
+import { updateTitle, addTitleBtnsDom, addListDom, addBulletDom } from "./dom-logic/pages-dom-logic";
 
 newList("Personal");
 newList("Work");
