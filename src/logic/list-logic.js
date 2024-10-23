@@ -1,4 +1,7 @@
-export {lists, newList, addBullet}
+export {
+    newList,
+    addBullet
+}
 
 let lists = {};
 

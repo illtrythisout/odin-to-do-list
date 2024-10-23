@@ -1,7 +1,17 @@
-import {makeElement, removeElement} from "./element-factory";
+import {
+    makeElement,
+    removeElement
+} from "./element-factory";
 import editImg from "../images/edit.svg";
 import deleteImg from "../images/delete.svg";
-export {updateTitle, addTitleBtnsDom, addListDom, addBulletDom, makeNewListDom, makeNewBulletDom}
+export {
+    updateTitle,
+    addTitleBtnsDom, 
+    addListDom,
+    addBulletDom,
+    makeNewListDom,
+    makeNewBulletDom
+}
 
 const updateTitle = function (content) {
     const title = document.querySelector(".listTitle");
@@ -11,11 +21,11 @@ const updateTitle = function (content) {
 const addTitleBtnsDom = function () {
     const container = document.querySelector(".listTitleActions");
 
-    const listDeleteBtn = makeElement("button", "", "", "", container);
+    const listDeleteBtn = makeElement("button", "id", "deleteListBtn", "", container);
     const listDeleteImg = makeElement("img", "alt", "delete list", "", listDeleteBtn);
     listDeleteImg.src = deleteImg;
 
-    const listEditBtn = makeElement("button", "", "", "", container);
+    const listEditBtn = makeElement("button", "id", "editListBtn", "", container);
     const listEditImg = makeElement("img", "alt", "edit bullet", "", listEditBtn);
     listEditImg.src = editImg;
 }
@@ -37,6 +47,7 @@ const addBulletDom = function (title, description, date) {
     const checkbox = makeElement("input", "class", "checkbox", "", checkBoxSurround);
     checkbox.setAttribute("type", "checkbox");
     checkbox.setAttribute("name", "completeBullet");
+    checkbox.setAttribute("value", title);
     const checkmark = makeElement("span", "class", "checkmark", "", checkBoxSurround);
 
     const bulletText = makeElement("div", "class", "bulletText", "", bulletPoint);
@@ -45,9 +56,10 @@ const addBulletDom = function (title, description, date) {
 
     const bulletDate = makeElement("p", "class", "bulletDate", date, bulletPoint);
 
-    const bulletEdit = makeElement("button", "class", "bulletEdit", "", bulletPoint);
-    const bulletEditImg = makeElement("img", "alt", "edit bullet", "", bulletEdit);
-    bulletEditImg.src = deleteImg;
+    const bulletDelete = makeElement("button", "class", "bulletDelete", "", bulletPoint);
+    bulletDelete.setAttribute("value", title);
+    const bulletDeleteImg = makeElement("img", "alt", "edit bullet", "", bulletDelete);
+    bulletDeleteImg.src = deleteImg;
 }
 
 const makeNewListDom = function () {
@@ -56,7 +68,7 @@ const makeNewListDom = function () {
     const listMakerLi = makeElement("li", "class", "listsOptionsLi", "", container);
     const listMakerButton = makeElement("button", "", "", "", listMakerLi);
     const listMakerInput = makeElement("input", "type", "text", "", listMakerButton);
-    listMakerInput.setAttribute("maxlength", "10")
+    listMakerInput.setAttribute("maxlength", "10");
 }
 
 const makeNewBulletDom = function (title, description, date) {
@@ -83,7 +95,7 @@ const makeNewBulletDom = function (title, description, date) {
     bulletDate.setAttribute("class", "bulletDate");
     bulletDate.setAttribute("placeholder", "dd/mm/yy");
 
-    const bulletDelete = makeElement("button", "class", "bulletEdit", "", bulletPoint);
-    const bulletEditImg = makeElement("img", "alt", "edit bullet", "", bulletDelete);
-    bulletEditImg.src = deleteImg;
+    const bulletDelete = makeElement("button", "class", "bulletDelete", "", bulletPoint);
+    const bulletDeleteImg = makeElement("img", "alt", "edit bullet", "", bulletDelete);
+    bulletDeleteImg.src = deleteImg;
 }

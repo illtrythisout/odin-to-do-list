@@ -281,7 +281,7 @@ body {
     color: var(--primary-dimmed);
 }
 
-.bulletEdit {
+.bulletDelete {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -296,6 +296,6 @@ body {
 
     transition: var(--highlight-transition-time);
 }
-.bulletEdit:hover {
+.bulletDelete:hover {
     background-color: var(--grey-hover);
 }

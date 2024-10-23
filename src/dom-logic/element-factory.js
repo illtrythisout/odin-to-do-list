@@ -1,4 +1,7 @@
-export {makeElement, removeElement}
+export {
+    makeElement,
+    removeElement
+}
 
 function makeElement(tag, att, attValue, textContent, appendTo) {
     let element = document.createElement(tag);
