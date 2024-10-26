@@ -8,16 +8,13 @@
   font-family: Poppins;
   list-style-type: none;
 }
-
 img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
 }
-
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
-
 input, button, textarea, select {
     font: inherit;
 }
@@ -25,6 +22,11 @@ input, button, textarea, select {
 @font-face {
     font-family: poppins;
     src: url(./fonts/Poppins-Regular.ttf);
+}
+@font-face {
+    font-family: poppins;
+    src: url(./fonts/Poppins-Light.ttf);
+    font-weight: 300;
 }
 
 :root {
@@ -112,7 +114,9 @@ body {
     outline: none;
     background-color: transparent;
     width: 100%;
+    color: var(--primary-dimmed);
 }
+
 .bulletDate {
     text-align: center;
 }

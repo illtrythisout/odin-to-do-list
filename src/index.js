@@ -1,14 +1,15 @@
 import "./styles.css";
 import {
     newList,
-    addBullet
+    addBullet,
 } from "./logic/list-logic";
 import {
     updateTitle,
-    addTitleBtnsDom,
+    addTitleBtnsDom, 
     addListDom,
-    addBulletDom,
     makeNewListDom,
+    updateLists,
+    addBulletDom,
     makeNewBulletDom
 } from "./dom-logic/pages-dom-logic";
 import {
@@ -22,15 +23,8 @@ import {
     deleteBulletBtn,
 } from "./dom-logic/dom-elements"
 
-newList("Personal");
-newList("Work");
+updateLists();
 
-addBullet("Work", "Complete Project", "Steps 1, 2, 3, and 4", new Date(), "high")
-addBulletDom("Complete Project", "Steps 1, 2, 3, and 4", "21/10/2024")
-addListDom("Work");
-addTitleBtnsDom();
-
-makeNewListDom();
-makeNewBulletDom();
+addListBtn.addEventListener("click", newList);
 
 console.log(JSON.parse(localStorage.getItem("lists")))

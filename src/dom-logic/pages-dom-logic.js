@@ -2,14 +2,16 @@ import {
     makeElement,
     removeElement
 } from "./element-factory";
+import {lists} from "../logic/list-logic";
 import editImg from "../images/edit.svg";
 import deleteImg from "../images/delete.svg";
 export {
     updateTitle,
     addTitleBtnsDom, 
     addListDom,
-    addBulletDom,
     makeNewListDom,
+    updateLists,
+    addBulletDom,
     makeNewBulletDom
 }
 
@@ -17,7 +19,6 @@ const updateTitle = function (content) {
     const title = document.querySelector(".listTitle");
     title.textContent = content;
 }
-
 const addTitleBtnsDom = function () {
     const container = document.querySelector(".listTitleActions");
 
@@ -35,6 +36,24 @@ const addListDom = function (title) {
 
     const listsOptionsLi = makeElement("li", "class", "listsOptionsLi", "", container);
     const listButton = makeElement("button", "", "", title, listsOptionsLi);
+}
+const makeNewListDom = function () {
+    const container = document.querySelector(".listsOptions");
+
+    const listMakerLi = makeElement("li", "class", "listsOptionsLi listMakerLi", "", container);
+    const listMakerButton = makeElement("button", "class", "listMakerButton", "", listMakerLi);
+    const listMakerInput = makeElement("input", "type", "text", "", listMakerButton);
+    listMakerInput.setAttribute("maxlength", "20");
+    listMakerInput.setAttribute("class", "listMakerInput");
+}
+const updateLists = function (obj = lists) {
+    const listsArr = Object.keys(obj);
+    const container = document.querySelector(".listsOptions");
+    container.innerHTML = "";
+
+    listsArr.forEach((value) => {
+        addListDom(value);
+    });
 }
 
 const addBulletDom = function (title, description, date) {
@@ -61,16 +80,6 @@ const addBulletDom = function (title, description, date) {
     const bulletDeleteImg = makeElement("img", "alt", "edit bullet", "", bulletDelete);
     bulletDeleteImg.src = deleteImg;
 }
-
-const makeNewListDom = function () {
-    const container = document.querySelector(".listsOptions");
-
-    const listMakerLi = makeElement("li", "class", "listsOptionsLi", "", container);
-    const listMakerButton = makeElement("button", "", "", "", listMakerLi);
-    const listMakerInput = makeElement("input", "type", "text", "", listMakerButton);
-    listMakerInput.setAttribute("maxlength", "10");
-}
-
 const makeNewBulletDom = function (title, description, date) {
     const container = document.querySelector(".bulletsDiv");
 

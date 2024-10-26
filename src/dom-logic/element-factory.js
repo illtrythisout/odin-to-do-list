@@ -3,7 +3,7 @@ export {
     removeElement
 }
 
-function makeElement(tag, att, attValue, textContent, appendTo) {
+const makeElement = function(tag, att, attValue, textContent, appendTo) {
     let element = document.createElement(tag);
     if(att) {
         element.setAttribute(att, attValue);
@@ -16,7 +16,7 @@ function makeElement(tag, att, attValue, textContent, appendTo) {
     return element
 }
 
-function removeElement(parent) {
+const removeElement = function(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
