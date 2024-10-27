@@ -26,4 +26,8 @@ import {
 updateLists();
 addListBtn.addEventListener("click", newList);
 
+// newBullet("My List", "Title", "A Description", "01/01/2024")
+// newBullet("My List", "Tit le", "A Description", "01/01/2024")
+
+
 console.log(JSON.parse(localStorage.getItem("lists")))

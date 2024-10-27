@@ -177,6 +177,7 @@ body {
 
 .content {
     padding: var(--section-padding) calc(var(--section-padding) * 5);
+    position: relative;
 }
 
 .listTitleDiv {

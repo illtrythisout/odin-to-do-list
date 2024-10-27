@@ -25,7 +25,7 @@ const addToLocalStorage = function () {
 const newList = function() {
     const processListValue = function() {
         if (listMakerInput.value) {
-            if (lists[listMakerInput.value]) {
+            if (lists[listMakerInput.value] || listMakerInput.value === "Today" || listMakerInput.value === "This Week") {
                 listMakerInput.value = "";
                 return;
             }
