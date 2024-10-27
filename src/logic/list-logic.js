@@ -1,7 +1,7 @@
 export {
     lists,
     newList,
-    addBullet,
+    newBullet,
     addToLocalStorage
 }
 import {
@@ -31,7 +31,7 @@ const newList = function() {
             }
             lists[listMakerInput.value] = [];
             addToLocalStorage();
-            addListDom(listMakerInput.value);
+            updateLists()
         }
         listMakerLi.remove();
         console.log(JSON.parse(localStorage.getItem("lists")))
@@ -51,15 +51,10 @@ const newList = function() {
             processListValue();
         }, 0);
     });
-    listMakerInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-            processListValue();
-        }
-    });
 
 }
 
-const addBullet = function(list, title, description, date) {
+const newBullet = function(list, title, description, date) {
     let bullet = {
         title: title,
         description: description,

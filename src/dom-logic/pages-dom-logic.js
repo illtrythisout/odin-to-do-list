@@ -35,7 +35,7 @@ const addListDom = function (title) {
     const container = document.querySelector(".listsOptions");
 
     const listsOptionsLi = makeElement("li", "class", "listsOptionsLi", "", container);
-    const listButton = makeElement("button", "", "", title, listsOptionsLi);
+    const listButton = makeElement("button", "class", "listsOptionsBtn", title, listsOptionsLi);
 }
 const makeNewListDom = function () {
     const container = document.querySelector(".listsOptions");
@@ -54,6 +54,16 @@ const updateLists = function (obj = lists) {
     listsArr.forEach((value) => {
         addListDom(value);
     });
+
+    const addEventListenersToUserListBtns = function () {
+        const userListBtns = document.querySelectorAll(".listsOptionsBtn");
+        userListBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                console.log(`List button clicked: ${btn.textContent}`);
+            });
+        });
+    };
+    addEventListenersToUserListBtns();
 }
 
 const addBulletDom = function (title, description, date) {

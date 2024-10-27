@@ -1,7 +1,7 @@
 import "./styles.css";
 import {
     newList,
-    addBullet,
+    newBullet,
 } from "./logic/list-logic";
 import {
     updateTitle,
@@ -24,7 +24,6 @@ import {
 } from "./dom-logic/dom-elements"
 
 updateLists();
-
 addListBtn.addEventListener("click", newList);
 
 console.log(JSON.parse(localStorage.getItem("lists")))
