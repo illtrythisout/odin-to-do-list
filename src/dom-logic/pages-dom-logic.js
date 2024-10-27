@@ -6,6 +6,7 @@ import {
     lists,
     addToLocalStorage
 } from "../logic/list-logic";
+import { todayListBtn } from "./dom-elements";
 import editImg from "../images/edit.svg";
 import deleteImg from "../images/delete.svg";
 export {
@@ -22,20 +23,33 @@ const updateTitle = function (content) {
     const title = document.querySelector(".listTitle");
     title.textContent = content;
 }
-const loadPage = function (btn) {
+const loadPage = function (btn = todayListBtn) {
     if (btn.textContent !== "Today" && btn.textContent !== "This Week" && (document.querySelector("#deleteListBtn")) === null ) {
-        addTitleBtnsDom();
+        addTitleBtnsDom(btn.textContent);
     }
     console.log(`List button clicked: ${btn.textContent}`)
     updateTitle(btn.textContent);
     updateBullets(btn.textContent);
 }
-const addTitleBtnsDom = function () {
+const addTitleBtnsDom = function (title) {
     const container = document.querySelector(".listTitleActions");
 
     const listDeleteBtn = makeElement("button", "id", "deleteListBtn", "", container);
     const listDeleteImg = makeElement("img", "alt", "delete list", "", listDeleteBtn);
     listDeleteImg.src = deleteImg;
+
+    listDeleteBtn.addEventListener("click", () => {
+        delete lists[title]
+        addToLocalStorage();
+
+        updateLists();
+
+        updateTitle("");
+        const bulletContainer = document.querySelector(".bulletsDiv");
+        bulletContainer.innerHTML = "";
+        
+    })
+
 }
 
 const addListDom = function (title) {
@@ -124,9 +138,6 @@ const makeNewBulletDom = function (title, description, date) {
     const bulletDelete = makeElement("button", "class", "bulletDelete", "", bulletPoint);
     const bulletDeleteImg = makeElement("img", "alt", "edit bullet", "", bulletDelete);
     bulletDeleteImg.src = deleteImg;
-}
-const deleteBulletDom = function (bullet) {
-
 }
 const updateBullets = function (currentList) {
     let bulletsArr = lists[currentList];
