@@ -3,7 +3,8 @@ export {
     newList,
     newBullet,
     addToLocalStorage,
-    todayListLogic
+    todayListLogic,
+    thisWeekListLogic
 }
 import {
     updateTitle,
@@ -110,8 +111,6 @@ const newBullet = function() {
 }
 
 const todayListLogic = function () {
-    console.log("Today's console.log()s: \n", lists);
-
     lists.today = [];
 
     let today = new Date();
@@ -127,16 +126,46 @@ const todayListLogic = function () {
             allBullets.push(bullet)
         })
     })
-    console.log("allBullets: \n", allBullets)
     allBullets.forEach((bullet) => {
         if (bullet.date !== today) {
             return;
         }
         lists.today.push(bullet)
     })
-    console.log("lists.today: \n", lists.today)
 
 
     updateTitle("Today");
     updateBullets("today")
+}
+
+const thisWeekListLogic = function () {
+    lists.thisWeek = []; // Clear existing "This Week" list
+
+    let today = new Date();
+    let oneWeekFromToday = new Date();
+    oneWeekFromToday.setDate(today.getDate() + 7);
+
+    let todayStr = today.toISOString().split("T")[0];
+    let oneWeekStr = oneWeekFromToday.toISOString().split("T")[0];
+
+    let allBullets = [];
+
+    const listsArr = Object.keys(lists);
+    listsArr.forEach((key) => {
+        if (key === "today" || key === "thisWeek") {
+            return;
+        }
+        lists[key].forEach((bullet) => {
+            allBullets.push(bullet);
+        });
+    });
+
+    allBullets.forEach((bullet) => {
+        if (bullet.date >= todayStr && bullet.date <= oneWeekStr) {
+            lists.thisWeek.push(bullet);
+        }
+    });
+
+    updateTitle("This Week");
+    updateBullets("thisWeek");
 }

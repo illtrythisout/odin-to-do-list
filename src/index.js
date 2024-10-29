@@ -3,6 +3,7 @@ import {
     newList,
     newBullet,
     todayListLogic,
+    thisWeekListLogic
 } from "./logic/list-logic";
 import {
     updateTitle,
@@ -26,9 +27,10 @@ import {
 
 updateLists();
 todayListLogic();
-todayListBtn.addEventListener("click",todayListLogic)
+todayListBtn.addEventListener("click",todayListLogic);
+thisWeekListBtn.addEventListener("click", thisWeekListLogic);
 addListBtn.addEventListener("click", newList);
-addBulletBtn.addEventListener("click", newBullet)
+addBulletBtn.addEventListener("click", newBullet);
 
 
 
