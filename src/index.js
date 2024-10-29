@@ -17,14 +17,17 @@ import {
     thisWeekListBtn,
     userListBtns,
     addListBtn,
+    addBulletBtn,
     deleteListBtn,
-    editListBtn,
     bulletCheckbox,
     deleteBulletBtn,
 } from "./dom-logic/dom-elements"
 
 updateLists();
 addListBtn.addEventListener("click", newList);
+addBulletBtn.addEventListener("click", newBullet)
+
+// makeNewBulletDom()
 
 // newBullet("My List", "Title", "A Description", "01/01/2024")
 // newBullet("My List", "Tit le", "A Description", "01/01/2024")

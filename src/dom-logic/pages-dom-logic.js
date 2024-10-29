@@ -16,7 +16,8 @@ export {
     makeNewListDom,
     updateLists,
     addBulletDom,
-    makeNewBulletDom
+    makeNewBulletDom,
+    updateBullets
 }
 
 const updateTitle = function (content) {
@@ -41,6 +42,7 @@ const addTitleBtnsDom = function (title) {
     listDeleteBtn.addEventListener("click", () => {
         delete lists[title]
         addToLocalStorage();
+        listDeleteBtn.remove()
 
         updateLists();
 
@@ -111,11 +113,10 @@ const addBulletDom = function (title, description, date) {
     const bulletDeleteImg = makeElement("img", "alt", "edit bullet", "", bulletDelete);
     bulletDeleteImg.src = deleteImg;
 }
-const makeNewBulletDom = function (title, description, date) {
+const makeNewBulletDom = function () {
     const container = document.querySelector(".bulletsDiv");
 
-
-    const bulletPoint = makeElement("div", "class", "bulletPoint", "", container);
+    const bulletPoint = makeElement("div", "class", "bulletPoint bulletMaker", "", container);
 
     const checkBoxSurround = makeElement("label", "class", "checkBoxSurround", "", bulletPoint);
     const checkmark = makeElement("span", "class", "checkmark", "", checkBoxSurround);
@@ -123,21 +124,16 @@ const makeNewBulletDom = function (title, description, date) {
     const bulletText = makeElement("div", "class", "bulletText", "", bulletPoint);
     const BulletMakerTitleInput = makeElement("input", "type", "text", "", bulletText);
     BulletMakerTitleInput.setAttribute("maxlength", "20");
-    BulletMakerTitleInput.setAttribute("class", "bulletTitle");
+    BulletMakerTitleInput.setAttribute("class", "bulletTitle bulletTitleInput");
     BulletMakerTitleInput.setAttribute("placeholder", "Title");
     const BulletMakerDescriptionInput = makeElement("input", "type", "text", "", bulletText);
     BulletMakerDescriptionInput.setAttribute("maxlength", "25");
-    BulletMakerDescriptionInput.setAttribute("class", "bulletDescription");
+    BulletMakerDescriptionInput.setAttribute("class", "bulletDescription bulletDescriptionInput");
     BulletMakerDescriptionInput.setAttribute("placeholder", "Description");
 
-    const bulletDate = makeElement("input", "type", "text", "", bulletPoint);
-    bulletDate.setAttribute("maxlength", "10");
-    bulletDate.setAttribute("class", "bulletDate");
-    bulletDate.setAttribute("placeholder", "dd/mm/yy");
+    const bulletDate = makeElement("input", "type", "date", "", bulletPoint);
+    bulletDate.setAttribute("class", "bulletDate bulletDateInput");
 
-    const bulletDelete = makeElement("button", "class", "bulletDelete", "", bulletPoint);
-    const bulletDeleteImg = makeElement("img", "alt", "edit bullet", "", bulletDelete);
-    bulletDeleteImg.src = deleteImg;
 }
 const updateBullets = function (currentList) {
     let bulletsArr = lists[currentList];

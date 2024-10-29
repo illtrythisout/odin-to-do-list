@@ -11,7 +11,8 @@ import {
     makeNewListDom,
     updateLists,
     addBulletDom,
-    makeNewBulletDom
+    makeNewBulletDom,
+    updateBullets
 } from "../dom-logic/pages-dom-logic";
 
 
@@ -38,7 +39,7 @@ const newList = function() {
     }
 
 
-    if(document.querySelector(".listMakerButton") !== null) {return}; // Checks if there already is a addList button to prevent duplicates
+    if(document.querySelector(".listMakerButton") !== null) {return}; // Checks if there already is a addList input to prevent duplicates
 
     makeNewListDom();
 
@@ -54,18 +55,51 @@ const newList = function() {
 
 }
 
-const newBullet = function(list, title, description, date) {
-    let bullet = {
-        title: title,
-        description: description,
-        date: date,
-        completed: false
-    };
+const newBullet = function() {
 
-    if (!lists[list]) {
-        lists[list] = [];
+    const processBulletValue = function() {
+        const currentList = document.querySelector(".listTitle").textContent
+        if (bulletTitleInput.value) {
+            if (lists[currentList].find(bullet => bullet.title === bulletTitleInput.value)) {
+                bulletTitleInput.value = "";
+                return;
+            }
+            if (!bulletTitleInput.value) {
+                return;
+            }
+            console.log(bulletTitleInput.value + bulletDescriptionInput.value + bulletDateInput.value + bulletCheckmarkInput.checked)
+            lists[currentList].push({
+                title: bulletTitleInput.value,
+                description: bulletDescriptionInput.value,
+                date: bulletDateInput.value,
+                completed: bulletCheckmarkInput.checked
+            });
+            addToLocalStorage();
+            updateBullets(currentList);
+        }
+        bulletMaker.remove();
+        // console.log(JSON.parse(localStorage.getItem("lists")))
     }
 
-    lists[list].push(bullet);
-    addToLocalStorage();
+
+    if(document.querySelector(".bulletMaker") !== null) {return}; // Checks if there already is a addBullet input to prevent duplicates
+
+    makeNewBulletDom();
+
+    const bulletTitleInput = document.querySelector(".bulletTitleInput");
+    const bulletDescriptionInput = document.querySelector(".bulletDescriptionInput");
+    const bulletDateInput = document.querySelector(".bulletDateInput");
+    const bulletCheckmarkInput = document.querySelector(".checkmark");
+    bulletTitleInput.focus();
+
+    const bulletMaker = document.querySelector(".bulletMaker")
+
+    setTimeout(() => {
+        document.addEventListener("click", (e) => {
+            if(!bulletMaker.contains(e.target)) {
+                processBulletValue();
+            }
+        })
+    }, 0)
+
 }

@@ -116,6 +116,9 @@ body {
     width: 100%;
     color: var(--primary-dimmed);
 }
+input[type="date"]::-webkit-calendar-picker-indicator{
+    margin-left: -4rem;
+}
 
 .bulletDate {
     text-align: center;
