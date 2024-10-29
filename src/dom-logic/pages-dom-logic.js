@@ -92,7 +92,7 @@ const updateLists = function () {
     addEventListenersToUserListBtns();
 }
 
-const addBulletDom = function (title, description, date) {
+const addBulletDom = function (title, description, date, completed) {
     const container = document.querySelector(".bulletsDiv");
 
 
@@ -103,6 +103,9 @@ const addBulletDom = function (title, description, date) {
     checkbox.setAttribute("type", "checkbox");
     checkbox.setAttribute("name", "completeBullet");
     checkbox.setAttribute("value", title);
+    if (completed) {
+        checkbox.setAttribute("checked", "");
+    }
     const checkmark = makeElement("span", "class", "checkmark", "", checkBoxSurround);
 
     const bulletText = makeElement("div", "class", "bulletText", "", bulletPoint);
@@ -144,7 +147,7 @@ const updateBullets = function (currentList) {
     container.innerHTML = "";
 
     bulletsArr.forEach( obj => {
-        addBulletDom(obj.title, obj.description, obj.date);
+        addBulletDom(obj.title, obj.description, obj.date, obj.completed);
     });
 
     const addEventListenersToUserBulletBtns = function () {
