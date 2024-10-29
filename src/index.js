@@ -25,6 +25,7 @@ import {
 } from "./dom-logic/dom-elements"
 
 updateLists();
+todayListLogic();
 todayListBtn.addEventListener("click",todayListLogic)
 addListBtn.addEventListener("click", newList);
 addBulletBtn.addEventListener("click", newBullet)
