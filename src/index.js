@@ -2,6 +2,7 @@ import "./styles.css";
 import {
     newList,
     newBullet,
+    todayListLogic,
 } from "./logic/list-logic";
 import {
     updateTitle,
@@ -24,13 +25,10 @@ import {
 } from "./dom-logic/dom-elements"
 
 updateLists();
+todayListBtn.addEventListener("click",todayListLogic)
 addListBtn.addEventListener("click", newList);
 addBulletBtn.addEventListener("click", newBullet)
 
-// makeNewBulletDom()
-
-// newBullet("My List", "Title", "A Description", "01/01/2024")
-// newBullet("My List", "Tit le", "A Description", "01/01/2024")
 
 
 console.log(JSON.parse(localStorage.getItem("lists")))

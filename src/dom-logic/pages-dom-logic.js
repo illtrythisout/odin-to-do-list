@@ -11,6 +11,7 @@ import editImg from "../images/edit.svg";
 import deleteImg from "../images/delete.svg";
 export {
     updateTitle,
+    loadPage,
     addTitleBtnsDom, 
     addListDom,
     makeNewListDom,
@@ -28,7 +29,6 @@ const loadPage = function (btn = todayListBtn) {
     if (btn.textContent !== "Today" && btn.textContent !== "This Week" && (document.querySelector("#deleteListBtn")) === null ) {
         addTitleBtnsDom(btn.textContent);
     }
-    console.log(`List button clicked: ${btn.textContent}`)
     updateTitle(btn.textContent);
     updateBullets(btn.textContent);
 }
@@ -74,8 +74,11 @@ const updateLists = function () {
     const container = document.querySelector(".listsOptions");
     container.innerHTML = "";
 
-    listsArr.forEach((value) => {
-        addListDom(value);
+    listsArr.forEach((key) => {
+        if (key === "today" || key === "thisWeek") {
+            return;
+        }
+        addListDom(key);
     });
 
     const addEventListenersToUserListBtns = function () {

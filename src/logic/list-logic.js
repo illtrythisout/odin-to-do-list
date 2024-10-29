@@ -2,10 +2,12 @@ export {
     lists,
     newList,
     newBullet,
-    addToLocalStorage
+    addToLocalStorage,
+    todayListLogic
 }
 import {
     updateTitle,
+    loadPage,
     addTitleBtnsDom, 
     addListDom,
     makeNewListDom,
@@ -16,7 +18,10 @@ import {
 } from "../dom-logic/pages-dom-logic";
 
 
-let lists = JSON.parse(localStorage.getItem("lists")) || {}; // Gets list obj from localStorage, or creates list obj if none exists yet
+let lists = JSON.parse(localStorage.getItem("lists")) || {
+    today: [],
+    thisWeek: []
+}; // Gets list obj from localStorage, or creates list obj if none exists yet
 
 const addToLocalStorage = function () {
     localStorage.setItem("lists", JSON.stringify(lists));
@@ -26,7 +31,7 @@ const addToLocalStorage = function () {
 const newList = function() {
     const processListValue = function() {
         if (listMakerInput.value) {
-            if (lists[listMakerInput.value] || listMakerInput.value === "Today" || listMakerInput.value === "This Week") {
+            if (lists[listMakerInput.value] || listMakerInput.value === "Today" || listMakerInput.value === "This Week" || listMakerInput.value === "today" || listMakerInput.value === "thisWeek") {
                 listMakerInput.value = "";
                 return;
             }
@@ -102,4 +107,36 @@ const newBullet = function() {
         })
     }, 0)
 
+}
+
+const todayListLogic = function () {
+    console.log("Today's console.log()s: \n", lists);
+
+    lists.today = [];
+
+    let today = new Date();
+    today = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate()
+    let allBullets = [];
+
+    const listsArr = Object.keys(lists);
+    listsArr.forEach((key) => {
+        if (key === "today" || key === "thisWeek") {
+            return;
+        }
+        lists[key].forEach((bullet) => {
+            allBullets.push(bullet)
+        })
+    })
+    console.log("allBullets: \n", allBullets)
+    allBullets.forEach((bullet) => {
+        if (bullet.date !== today) {
+            return;
+        }
+        lists.today.push(bullet)
+    })
+    console.log("lists.today: \n", lists.today)
+
+
+    updateTitle("Today");
+    updateBullets("today")
 }
